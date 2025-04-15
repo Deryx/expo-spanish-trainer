@@ -1,16 +1,14 @@
 import React from "react";
-import Question from "../ui/Question";
-import QuizQuestion from "../../types/QuizQuestion";
+import QuizQuestion from "../ui/QuizQuestion";
 
 interface WordQuizProps {
-  quizQuestions: QuizQuestion[];  
+  question: string,
+  answers: string[]  
 }
 
-const WordQuiz = ({ quizQuestions }: WordQuizProps) => {
+const WordQuiz = ({ question, answers }: WordQuizProps) => {
     return (
-        quizQuestions.map(( question, index ) =>
-            <Question key={`question-${index}`} question={question.getQuestion()} answers={question.getAnswers()} />    
-        )
+        <QuizQuestion question={question} answers={answers} />    
     )
 }   
 
