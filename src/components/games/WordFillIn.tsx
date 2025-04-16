@@ -1,18 +1,23 @@
 import React from "react";
+import { View, Text } from "react-native";
+import FillinQuestion from "../ui/FillinQuestion";
+
+type QUESTION_ANSWER_PAIR = {
+    question: string,
+    answer: string
+};
 
 interface WordFillInProps {
-    question: string
-} 
+    questionBattery: QUESTION_ANSWER_PAIR[];
+}
 
-const WordFillIn = ({ question }: WordFillInProps) => {
+const WordFillIn = ({ questionBattery }: WordFillInProps) => {
     return (
         <>
-            <dl>
-                <dt>{ question }</dt>
-                <dd>
-                    <input type="text" />
-                </dd>
-            </dl>
+            { 
+                questionBattery.map(( question ) => 
+                    <FillinQuestion key={question.question} question={question.question} />
+            )}
         </>
     )
 };

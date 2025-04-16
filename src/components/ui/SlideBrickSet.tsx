@@ -6,10 +6,12 @@ interface SlideBrickSetProps {
     brickSetColor: string;
 }
 
-const SlideBrickSet = ({ brickSetText, brickSetColor }: SlideBrickSetProps) => {
-    return (
-        brickSetText.map((text, index) => <SlideBrick key={`${text}-${index}`} brickColor={brickSetColor} text={text} />)
-    )
-}
+const SlideBrickSet = ({ brickSetText, brickSetColor }: SlideBrickSetProps) => (
+    <>
+        {brickSetText.map((brickText) => (
+            <SlideBrick key={brickText} text={brickText} brickColor={brickSetColor} />
+        ))}
+    </>
+);
 
 export default SlideBrickSet;

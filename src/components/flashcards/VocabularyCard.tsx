@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, Text } from 'react-native';
 import Vocabulary from '../../types/Vocabulary';
 
 interface VocabularyCardProps {
@@ -8,14 +9,25 @@ interface VocabularyCardProps {
 const VocabularyCard = ({ vocabulary }: VocabularyCardProps) => {
     return (
         <>
-            <section>
-                <h3>{ vocabulary.getWord() }</h3>
-                <div>{ vocabulary.getPronunciation() }</div>
-            </section>
-            <section>
-                <h2>{ vocabulary.getTranslation() }</h2>
-                vocabulary.image && <div>{ vocabulary.getImage() }</div>
-            </section>
+            <View>
+                <Text>{ vocabulary.getWord() }</Text>
+
+                <View>
+                    <Text>
+                        { vocabulary.getPronunciation() }
+                    </Text>     
+                </View>
+            </View>
+
+            <View>
+                <Text>{ vocabulary.getTranslation() }</Text>
+                {
+                    vocabulary.image && 
+                        <View>
+                            { vocabulary.getImage() }
+                        </View>
+                }
+            </View>
         </>
     )
 }

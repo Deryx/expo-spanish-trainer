@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 interface SlideBrickProps {
     text: string;
@@ -7,10 +8,14 @@ interface SlideBrickProps {
 
 const SlideBrick = ({ text, brickColor } : SlideBrickProps) => {
     return (
-        <div style={{ backgroundColor: brickColor }}>
-            {text}
-        </div>
+        <View style={{ backgroundColor: brickColor }}>
+            <Text>{ text }</Text>           
+        </View>
     )
-}   
+}
+
+const styles = StyleSheet.create({
+    
+});
 
 export default SlideBrick;

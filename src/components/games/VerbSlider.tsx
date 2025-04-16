@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import Conjugations from "../../types/Conjugations";
 import SlideBrickSet from "../ui/SlideBrickSet";
 
@@ -17,24 +18,31 @@ const VerbSlider = ({
     const CONJUGATIONS: string[] = [conjugations.getYo(), conjugations.getEl(), conjugations.getEl(), conjugations.getNosotros(), conjugations.getVosotros(), conjugations.getEllos()]
 
     return (
-        <div className="verb-slider-container">
+        <View>
+            <View>
+                <Text>Verb Slider</Text>
+            </View>
             {/* Pronouns Row */}
-            <div className="pronouns-row">
+            <View>
                 <SlideBrickSet 
                     brickSetColor={pronounBricksColor} 
                     brickSetText={PRONOUNS} 
                 />
-            </div>
+            </View>
 
             {/* Conjugations Row */}
-            <div className="conjugations-row">
+            <View>
                 <SlideBrickSet 
                     brickSetColor={conjugationsBricksColor} 
                     brickSetText={CONJUGATIONS} 
                 />
-            </div>
-        </div>
+            </View>
+        </View>
     );
 };
+
+const styles = StyleSheet.create({
+    
+});
 
 export default VerbSlider;

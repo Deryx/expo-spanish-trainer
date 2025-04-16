@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 
 interface WordCompleteProps {
     question: string;
@@ -10,16 +11,21 @@ const WordComplete = ({ question, answer }: WordCompleteProps) => {
 
     return (
         <>
-            <dl>
-                <dt>{ question }</dt>
-                <dd>
-                    { ANSWER_ARRAY.map((letter, index) => 
-                        <input type="text" value={letter} />
-                    )}
-                </dd>
-            </dl>
+            <View>
+                <Text>{ question }</Text>
+            </View>
+
+            <View>
+                { ANSWER_ARRAY.map((letter, index) => 
+                    <TextInput value={letter} />
+                )}
+            </View>
         </>
     )
 };
+
+const styles = StyleSheet.create({
+    
+});
 
 export default WordComplete;

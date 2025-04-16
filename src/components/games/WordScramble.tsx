@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 interface WordScrambleProps {
     question: string;
@@ -10,18 +11,23 @@ const WordScramble = ({ question, answer }: WordScrambleProps) => {
 
     return (
         <>
-            <dl>
-                <dt>{ question }</dt>
-                <dd>
+            <View>
+                <Text>{ question }</Text>
+
+                <View>
                     { ANSWER_ARRAY.map((letter, index) =>
-                        <div key={`answer-${index}`}>
+                        <View key={`answer-${index}`}>
                             { letter }
-                        </div>
+                        </View>
                     )}
-                </dd>
-            </dl>
+                </View>
+            </View>
         </>
     )
 };
+
+const styles = StyleSheet.create({
+    
+});
 
 export default WordScramble;

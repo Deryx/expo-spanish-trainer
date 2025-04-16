@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import Vocabulary from "../../types/Vocabulary";
 import SlideBrickSet from "../ui/SlideBrickSet";
 
@@ -22,21 +23,29 @@ const WordSlider = ({
     });
 
     return (
-        <>
-            <div>
+        <View>
+            <View>
+                <Text>Word Slider</Text>
+            </View>
+
+            <View>
                 <SlideBrickSet 
                     brickSetColor={brickWordsColor} 
                     brickSetText={WORDS} 
                 />
-            </div>
-            <div>
+            </View>
+            <View>
                 <SlideBrickSet 
                     brickSetColor={brickTranslationsColor} 
                     brickSetText={TRANSLATIONS}
                 />
-            </div>
-        </>
+            </View>
+        </View>
     );
 };
+
+const styles = StyleSheet.create({
+    
+});
 
 export default WordSlider;

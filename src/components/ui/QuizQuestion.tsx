@@ -1,5 +1,5 @@
 import React from 'react';
-import Vocabulary from '../../types/Vocabulary';
+import { View, Text, StyleSheet } from 'react-native';
 
 interface QuestionProps {
     question: string;
@@ -9,9 +9,10 @@ interface QuestionProps {
 const QuizQuestion = ({ question, answers }: QuestionProps) => {
     return (
         <>
-            <dl>
-                <dt>{ question }</dt>
-                <dd>
+            <View>
+                <Text>{ question }</Text>
+
+                <View>
                     {
                         answers.map(( answer, index) =>
                             <>
@@ -20,10 +21,14 @@ const QuizQuestion = ({ question, answers }: QuestionProps) => {
                             </>
                         )
                     }
-                </dd>
-            </dl> 
+                </View>
+            </View>
         </>
     );
 };
+
+const styles = StyleSheet.create({
+    
+});
 
 export default QuizQuestion;

@@ -1,5 +1,7 @@
 import React from 'react';
+import { View, Text } from 'react-native';
 import Verb from '../../types/Verb';
+import Conjugation from '../ui/Conjugation';
 import Conjugations from '../../types/Conjugations';
 
 interface IVerbCardProps {
@@ -10,28 +12,23 @@ interface IVerbCardProps {
 const VerbCard = ({ verb, conjugations }: IVerbCardProps) => { 
     return (
         <>
-            <section>
-                <h3>{ verb.infinitive }</h3>
-                <div>{ verb.translation }</div>
-                <div>{ verb.pronunciation }</div>
-            </section>
-            <section>
-                <h3>{ conjugations.tense } tense</h3>
-                <dl>
-                    <dt>Yo: </dt>
-                    <dd>{ conjugations.getYo() }</dd>
-                    <dt>Tu: </dt>
-                    <dd>{ conjugations.getTu() }</dd>
-                    <dt>El/Ella/Usted: </dt>
-                    <dd>{ conjugations.getEl() }</dd>
-                    <dt>Nosotros: </dt>
-                    <dd>{ conjugations.getNosotros() }</dd>
-                    <dt>Vosotros: </dt>
-                    <dd>{ conjugations.getVosotros() }</dd>
-                    <dt>Ellos/Ellas/Ustedes: </dt>
-                    <dd>{ conjugations.getEllos() }</dd>
-                </dl>
-            </section>
+            <View>
+                <Text>{ verb.infinitive }</Text>
+                <Text>{ verb.translation }</Text>
+                <Text>{ verb.pronunciation }</Text>
+            </View>
+            <View>
+                <Text>{ conjugations.tense } tense</Text>
+
+                <View>
+                    <View><Conjugation pronoun='Yo' conjugation={conjugations.getYo()} /></View>
+                    <View><Conjugation pronoun='Tu' conjugation={conjugations.getTu()} /></View>
+                    <View><Conjugation pronoun='El' conjugation={conjugations.getEl()} /></View>
+                    <View><Conjugation pronoun='Nosotros' conjugation={conjugations.getNosotros()} /></View>
+                    <View><Conjugation pronoun='Vosotros' conjugation={conjugations.getVosotros()} /></View>
+                    <View><Conjugation pronoun='Ellos' conjugation={conjugations.getEllos()} /></View>
+                </View>
+            </View>
         </>
     )
 }
