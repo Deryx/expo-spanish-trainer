@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Verb from '../../types/Verb';
 import Conjugation from '../ui/Conjugation';
 import Conjugations from '../../types/Conjugations';
