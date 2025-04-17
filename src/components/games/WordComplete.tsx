@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
 interface WordCompleteProps {
@@ -7,7 +7,38 @@ interface WordCompleteProps {
 }
 
 const WordComplete = ({ question, answer }: WordCompleteProps) => {
-    const ANSWER_ARRAY = answer.split('');
+    let ANSWER_ARRAY = answer.split('');
+
+    useEffect(() => {
+        const arrayLength = ANSWER_ARRAY.length;
+        const randomBlanks = Math.floor(( Math.random() * arrayLength - 3 ));
+        const generateRandomArray = () => {
+            let randomIndices: number[] = [];
+            let index = 0;
+
+            while( index <= randomBlanks ) {
+                let newNumber = Math.floor(( Math.random() * arrayLength - 1 ));
+
+                if( !randomIndices.includes( newNumber ) ) {
+                    randomIndices = [...randomIndices, newNumber];
+                    index++;
+                } else {
+                    continue;
+                }
+            }
+
+            return randomIndices;
+        }
+
+        const generateRandomBlanks = () => {
+            let randomIndices = generateRandomArray();
+            for( const index in randomIndices ) {
+                ANSWER_ARRAY[index] = '';
+            }
+        }
+
+        generateRandomBlanks();
+    }, []);
 
     return (
         <>
@@ -16,7 +47,7 @@ const WordComplete = ({ question, answer }: WordCompleteProps) => {
             </View>
 
             <View>
-                { ANSWER_ARRAY.map((letter, index) => 
+                { ANSWER_ARRAY.map((letter) => 
                     <TextInput value={letter} />
                 )}
             </View>
@@ -25,7 +56,7 @@ const WordComplete = ({ question, answer }: WordCompleteProps) => {
 };
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default WordComplete;

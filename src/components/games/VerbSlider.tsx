@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Conjugations from "../../types/Conjugations";
 import SlideBrickSet from "../ui/SlideBrickSet";
+import useRandomArrayGenerator from "../../hooks/useRandomArrayGenerator";
 
 interface VerbSliderProps {
     conjugations: Conjugations;
@@ -11,11 +12,12 @@ interface VerbSliderProps {
 
 const VerbSlider = ({ 
     conjugations, 
-    pronounBricksColor = "#defaultColor",  // Default green for pronouns
-    conjugationsBricksColor = "#defaultColor"  // Default blue for conjugations
+    pronounBricksColor = "#defaultColor",
+    conjugationsBricksColor = "#defaultColor"
 }: VerbSliderProps) => {
     const PRONOUNS: string[] = ['yo', 'tú', 'él', 'nosotros', 'vosotros', 'ellos'];
-    const CONJUGATIONS: string[] = [conjugations.getYo(), conjugations.getEl(), conjugations.getEl(), conjugations.getNosotros(), conjugations.getVosotros(), conjugations.getEllos()]
+    let CONJUGATIONS: string[] = [conjugations.getYo(), conjugations.getEl(), conjugations.getEl(), conjugations.getNosotros(), conjugations.getVosotros(), conjugations.getEllos()];
+    CONJUGATIONS = useRandomArrayGenerator(CONJUGATIONS);
 
     return (
         <View>
@@ -39,7 +41,7 @@ const VerbSlider = ({
 };
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default VerbSlider;

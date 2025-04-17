@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Vocabulary from "../../types/Vocabulary";
 import SlideBrickSet from "../ui/SlideBrickSet";
+import useRandomArrayGenerator from "../../hooks/useRandomArrayGenerator";
 
 interface WordSliderProps {
     words: Vocabulary[];
@@ -15,12 +16,14 @@ const WordSlider = ({
     brickTranslationsColor = "#defaultColor2" 
 }: WordSliderProps) => {
     const WORDS: string[] = [];
-    const TRANSLATIONS: string[] = [];
+    let TRANSLATIONS: string[] = [];
 
     words.forEach((word) => {
         WORDS.push(word.getWord());
         TRANSLATIONS.push(word.getTranslation());
     });
+
+    TRANSLATIONS = useRandomArrayGenerator(TRANSLATIONS);
 
     return (
         <View>
@@ -41,7 +44,7 @@ const WordSlider = ({
 };
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default WordSlider;
