@@ -4,7 +4,7 @@ import Verb from '../types/Verb';
 import Conjugations from '../types/Conjugations';
 import VerbCard from '../components/flashcards/VerbCard';
 
-const App = () => {
+const VerbFlashcardScreen = () => {
     return (
         <View>
             <View>
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
 
 });
 
-export  default App;
+export  default VerbFlashcardScreen;

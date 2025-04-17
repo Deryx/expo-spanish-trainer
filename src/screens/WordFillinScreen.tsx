@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import Vocabulary from '../types/Vocabulary';
 import WordFillIn from '../components/games/WordFillIn';
 
-const App = () => {
+const WordFillinScreen = () => {
     return (
         <View>
             <View>
@@ -17,4 +17,4 @@ const App = () => {
     );
 };      
 
-export default App;
+export default WordFillinScreen;
