@@ -25,10 +25,6 @@ const WordSlider = ({
     return (
         <View>
             <View>
-                <Text>Word Slider</Text>
-            </View>
-
-            <View>
                 <SlideBrickSet 
                     brickSetColor={brickWordsColor} 
                     brickSetText={WORDS} 

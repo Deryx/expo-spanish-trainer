@@ -19,9 +19,6 @@ const VerbSlider = ({
 
     return (
         <View>
-            <View>
-                <Text>Verb Slider</Text>
-            </View>
             {/* Pronouns Row */}
             <View>
                 <SlideBrickSet 
