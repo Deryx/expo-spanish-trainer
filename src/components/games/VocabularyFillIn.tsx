@@ -11,7 +11,7 @@ interface WordFillInProps {
     questionBattery: QUESTION_ANSWER_PAIR[];
 }
 
-const WordFillIn = ({ questionBattery }: WordFillInProps) => {
+const VocabularyFillIn = ({ questionBattery }: WordFillInProps) => {
     return (
         <>
             { 
@@ -22,4 +22,4 @@ const WordFillIn = ({ questionBattery }: WordFillInProps) => {
     )
 };
 
-export default WordFillIn;
+export default VocabularyFillIn;

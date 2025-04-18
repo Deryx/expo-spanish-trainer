@@ -6,17 +6,23 @@ interface WordCompleteProps {
     answer: string;
 }
 
-const WordComplete = ({ question, answer }: WordCompleteProps) => {
+const VocabularyComplete = ({ question, answer }: WordCompleteProps) => {
     let ANSWER_ARRAY = answer.split('');
 
     useEffect(() => {
         const arrayLength = ANSWER_ARRAY.length;
-        const randomBlanks = Math.floor(( Math.random() * arrayLength - 3 ));
-        const generateRandomArray = () => {
+        const randomBlanks = () => Math.floor(( Math.random() * arrayLength - 1 ));
+
+        let numberOfBlanks = randomBlanks();
+        while( numberOfBlanks === 0 || numberOfBlanks === 1 || numberOfBlanks === arrayLength - 1 ) {
+            numberOfBlanks = randomBlanks();
+        }
+
+        const setRandomArray = () => {
             let randomIndices: number[] = [];
             let index = 0;
 
-            while( index <= randomBlanks ) {
+            while( index <= numberOfBlanks ) {
                 let newNumber = Math.floor(( Math.random() * arrayLength - 1 ));
 
                 if( !randomIndices.includes( newNumber ) ) {
@@ -30,14 +36,14 @@ const WordComplete = ({ question, answer }: WordCompleteProps) => {
             return randomIndices;
         }
 
-        const generateRandomBlanks = () => {
-            let randomIndices = generateRandomArray();
+        const setRandomBlanks = () => {
+            let randomIndices = setRandomArray();
             for( const index in randomIndices ) {
                 ANSWER_ARRAY[index] = '';
             }
         }
 
-        generateRandomBlanks();
+        setRandomBlanks();
     }, []);
 
     return (
@@ -59,4 +65,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default WordComplete;
+export default VocabularyComplete;

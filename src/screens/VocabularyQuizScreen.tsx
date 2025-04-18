@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Vocabulary from '../types/Vocabulary';
-import WordQuiz from '../components/games/WordQuiz';
+import VocabularyQuiz from '../components/games/VocabularyQuiz';
 
 const WordQuizScreen = () => {
     return (
         <View>
             <View>
-                <Text>Word Quiz</Text>
+                <Text>Vocabulary Quiz</Text>
             </View>
 
             <View>

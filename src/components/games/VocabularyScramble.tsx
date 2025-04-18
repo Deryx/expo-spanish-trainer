@@ -2,12 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import useRandomArrayGenerator from "../../hooks/useRandomArrayGenerator";
 
-interface WordScrambleProps {
+interface VocabularyScrambleProps {
     question: string;
     answer: string;
 }
 
-const WordScramble = ({ question, answer }: WordScrambleProps) => {
+const VocabularyScramble = ({ question, answer }: VocabularyScrambleProps) => {
     let ANSWER_ARRAY = answer.split('');
     ANSWER_ARRAY = useRandomArrayGenerator(ANSWER_ARRAY);
 
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default WordScramble;
+export default VocabularyScramble;

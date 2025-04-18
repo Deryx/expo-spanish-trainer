@@ -1,15 +1,15 @@
 import React from "react";
 import QuizQuestion from "../ui/QuizQuestion";
 
-interface WordQuizProps {
+interface VocabularyQuizProps {
   question: string,
   answers: string[]  
 }
 
-const WordQuiz = ({ question, answers }: WordQuizProps) => {
+const VocabularyQuiz = ({ question, answers }: VocabularyQuizProps) => {
     return (
         <QuizQuestion question={question} answers={answers} />    
     )
 }   
 
-export default WordQuiz;
+export default VocabularyQuiz;

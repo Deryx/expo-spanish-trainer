@@ -10,7 +10,7 @@ interface WordSliderProps {
     brickTranslationsColor: string;
 }
 
-const WordSlider = ({ 
+const VocabularySlider = ({ 
     words, 
     brickWordsColor = "#defaultColor1", 
     brickTranslationsColor = "#defaultColor2" 
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default WordSlider;
+export default VocabularySlider;
