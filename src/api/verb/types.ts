@@ -45,6 +45,8 @@ export type ConjugationResult = {
 export type ConjugationQuestion = {
     question: string;
     userAnswers: {
+        verb: string;
+        tense: string;
         yo: string;
         tu: string;
         el: string;
@@ -53,6 +55,8 @@ export type ConjugationQuestion = {
         ellos: string;
     };
     correctAnswers: {
+        verb: string;
+        tense: string;
         yo: string;
         tu: string;
         el: string;
