@@ -1,45 +1,43 @@
-import { apiGet, apiPost, apiDelete } from '../client';
-import type { VocabularyItem, QuizParams } from '../../types';
+import { ApiResponse, ApiError } from '../types';
 
-/**
- * Fetch vocabulary by category
- */
-export const fetchVocabulary = async (
-  category?: string
-): Promise<VocabularyItem[]> => {
-  const endpoint = category ? `/vocabulary?category=${category}` : '/vocabulary';
-  return apiGet(endpoint);
+export type VocabularyCategory = 
+  | 'food' 
+  | 'travel' 
+  | 'business' 
+  | 'slang';
+
+export type VocabularyItem = {
+  id: string;
+  word: string;
+  definition: string;
+  exampleSentence: string;
+  imageUrl?: string;
+  audioUrl?: string;
+  category: VocabularyCategory;
+  difficulty: number;
+  lastReviewed?: string;
 };
 
-/**
- * Create flashcard
- */
-export const createFlashcard = async (
-  item: Omit<VocabularyItem, 'id'>
-): Promise<VocabularyItem> => {
-  return apiPost('/vocabulary', item);
+export type QuizQuestion = {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  explanation?: string;
 };
 
-/**
- * Start vocabulary quiz
- */
-export const startQuiz = async (
-  params: QuizParams
-): Promise<QuizSessionResponse> => {
-  return apiPost('/vocabulary/quiz', params);
+export type QuizSession = {
+  id: string;
+  questions: QuizQuestion[];
+  score?: number;
+  completed: boolean;
 };
 
-/**
- * Delete vocabulary item
- */
-export const deleteVocabularyItem = async (id: string): Promise<void> => {
-  return apiDelete(`/vocabulary/${id}`);
-};
+// API response types
+export type VocabularyListResponse = ApiResponse<VocabularyItem[]>;
+export type QuizSessionResponse = ApiResponse<QuizSession>;
+export type QuizResultResponse = ApiResponse<{ score: number }>;
 
-// Export all vocabulary-related API calls
-export const vocabularyApi = {
-  fetchVocabulary,
-  createFlashcard,
-  startQuiz,
-  deleteVocabularyItem,
+// Error types
+export type VocabularyError = ApiError & {
+  errorType?: 'invalid_category' | 'quiz_generation_failed';
 };

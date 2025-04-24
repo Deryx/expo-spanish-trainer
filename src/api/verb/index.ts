@@ -1,5 +1,5 @@
 import { apiGet, apiPost, apiPut, apiDelete } from '../client';
-import type { Verb, ConjugationParams, ConjugationResult } from '../../types';
+import type { Verb, ConjugationParams, ConjugationResult } from '../verb/types';
 
 /**
  * Fetch all verbs

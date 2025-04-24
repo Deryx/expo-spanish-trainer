@@ -1,18 +1,12 @@
 import { ApiResponse, ApiError } from '../types';
 
-export type VocabularyCategory = {
-  id: string;
-  category: string;
-}
-
 export type VocabularyItem = {
-    id: string;
-    word: string;
-    translation: string;
-    image?: string;
-    category: VocabularyCategory;
-    gender?: string;
-    pronunciation: string;
+  id: number;
+  category: number;
+  word: string;
+  translation: string;
+  pronunciation: string;
+  imageUrl?: string;
 };
 
 export type QuizQuestion = {

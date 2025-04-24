@@ -1,15 +1,15 @@
-import { ApiResponse, ApiError } from '../types';
+import { ApiResponse, ApiError } from '../../api/types';
 
 
 export type Verb = {
-  id: string;
+  id: number;
   infinitive: string;
   translation: string;
   pronunciation: string;
 };
 
 export type Conjugation = {
-    id: string;
+    id: number;
     verb: string;
     tense: string;
     yo: string;
@@ -20,23 +20,54 @@ export type Conjugation = {
     ellos: string;
 };
 
+export type VerbParams = {
+    id: number;
+}
+
 // Conjugation parameters
 export type ConjugationParams = {
-  tense: 
-    | 'present' 
-    | 'past' 
-    | 'future' 
-    | 'conditional';
-  mood?: 'indicative' | 'subjunctive' | 'imperative';
-  pronoun?: 'yo' | 'tú' | 'él' | 'nosotros' | 'vosotros' | 'ellos';
+    verb: number;
+    tense: number;
 };
 
 // Conjugation result
 export type ConjugationResult = {
-  conjugatedForm: string;
   tense: string;
   pronoun: string;
+  yo: string;
+  tu: string;
+  el: string;
+  nosotros: string;
+  vosotros: string;
+  ellos: string;
 };
+
+export type ConjugationQuestion = {
+    question: string;
+    userAnswers: {
+        yo: string;
+        tu: string;
+        el: string;
+        nosotros: string;
+        vosotros: string;
+        ellos: string;
+    };
+    correctAnswers: {
+        yo: string;
+        tu: string;
+        el: string;
+        nosotros: string;
+        vosotros: string;
+        ellos: string;
+    };
+}
+
+export type ConjugationSession = {
+  id: string;
+  questions: ConjugationQuestion[];
+  score?: number;
+  completed: boolean;
+}
 
 // API response types
 export type VerbsResponse = ApiResponse<Verb[]>;
