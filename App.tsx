@@ -18,15 +18,50 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>        
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="VerbFlashcard" component={VerbFlashcardScreen} />
-        <Stack.Screen name="VerbSlider" component={VerbSliderScreen} />
-        <Stack.Screen name="VocabularyFlashcard" component={VocabularyFlashcardScreen} />
-        <Stack.Screen name="VocabularySlider" component={VocabularySliderScreen} />
-        <Stack.Screen name="VocabularyComplete" component={WordCompleteScreen} />
-        <Stack.Screen name="VocabularyFillin" component={WordFillinScreen} />
-        <Stack.Screen name="VocabularyScramble" component={WordScrambleScreen} />
-        <Stack.Screen name="WordQuiz" component={WordQuizScreen} />
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="VerbFlashcard" 
+          component={VerbFlashcardScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="VerbSlider" 
+          component={VerbSliderScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="VocabularyFlashcard" 
+          component={VocabularyFlashcardScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen name="VocabularySlider" 
+          component={VocabularySliderScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="VocabularyComplete" 
+          component={WordCompleteScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="VocabularyFillin" 
+          component={WordFillinScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="VocabularyScramble" 
+          component={WordScrambleScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="WordQuiz" 
+          component={WordQuizScreen} 
+          options={{ headerShown: false }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
