@@ -1,6 +1,6 @@
 class Conjugations {
-    verb: string;
-    tense: string;
+    verb: number;
+    tense: number;
     yo: string;
     tu: string;
     el: string;
@@ -8,7 +8,7 @@ class Conjugations {
     vosotros: string;
     ellos: string;
 
-    constructor( verb: string, tense: string, yo: string, tu: string, el: string, nosotros: string, vosotros: string, ellos: string) {
+    constructor( verb: number, tense: number, yo: string, tu: string, el: string, nosotros: string, vosotros: string, ellos: string) {
         this.verb = verb;
         this.tense = tense;
         this.yo = yo;
