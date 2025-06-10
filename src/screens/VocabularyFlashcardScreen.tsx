@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import CategorySelector from '../components/ui/CategorySelector'
+import VocabularyService from '../services/VocabularyService';
+import { useFetch } from '../hooks/useFetch';
 import { useFonts } from 'expo-font';
 import { Outfit_500Medium } from '@expo-google-fonts/outfit';
 import Vocabulary from '../types/Vocabulary';
 import VocabularyCard from '../components/flashcards/VocabularyCard';
 
 const VocabularyFlashcardScreen = () => {
+    const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+    
     const [fontsLoaded] = useFonts({
         Outfit_500Medium
     });
+
     const navigation = useNavigation(); 
+
+    const handleCategoryChange = (categoryId: number) => {
+        setSelectedCategory(categoryId);
+    };
 
     if (!fontsLoaded) {
         return (
@@ -29,6 +39,8 @@ const VocabularyFlashcardScreen = () => {
 
             <View style={styles.contentContainer}>
                 <Text style={styles.heading}>Vocabulary Flashcard</Text>
+
+                <CategorySelector onCategoryChange={ handleCategoryChange } />
 
                 <View style={styles.content}>
                 </View>

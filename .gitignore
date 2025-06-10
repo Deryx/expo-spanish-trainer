@@ -34,3 +34,8 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+
+
+.nx/cache
+.nx/workspace-data

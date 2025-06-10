@@ -1,6 +1,6 @@
-import { Database } from './database';
+import DatabaseOperations from "./database/DatabaseOperations";
 
-type CategoryItem = {
+export type CategoryItem = {
     id: number;
     category: string;
 }
@@ -11,36 +11,36 @@ type VocabularyItem = {
     translation: string;
     pronunciation: string;
     category: number;
-    gender: string;
+    gender?: string;
     image?: string;
 }
 
-export const Category = {
+class VocabularyService {
     async getAllCategories() {
-        const result: any = await Database.executeQuery(
+        const result: any = await DatabaseOperations.executeQuery(
             `SELECT * FROM categories ORDER by category ASC`
         );
 
         return result.rows.raw() as CategoryItem[];
     }
-}
 
-export const Vocabulary = {
     async getAllWords() {
-        const result: any = await Database.executeQuery(
+        const result: any = await DatabaseOperations.executeQuery(
             `SELECT * FROM vocabulary ORDER BY word ASC`
         );
 
         return result.rows.raw() as VocabularyItem[];
     }
-}
-
-export const CategoryWords = {
+    
     async getCategoryWords(categoryId: number) {
-        const result: any = await Database.executeQuery(
-            `SELECT * FROM vocabulary WHERE category = ${categoryId} ORDER BY word ASC`
+        const result: any = await DatabaseOperations.executeQuery(
+            `SELECT * FROM vocabulary WHERE category = ? ORDER BY word ASC`,
+            [categoryId]
         );
 
-        return result.rows.raw() as VocabularyItem[];
+        return result.rows.raw() as CategoryItem[];
     }
-}
+};
+
+
+export default new VocabularyService();
