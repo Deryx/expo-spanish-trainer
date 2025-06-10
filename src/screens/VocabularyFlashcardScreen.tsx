@@ -10,6 +10,7 @@ import VocabularyCard from '../components/flashcards/VocabularyCard';
 
 const VocabularyFlashcardScreen = () => {
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
+    const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
 
     const { data: vocabulary, loading, error } = useFetch(() => VocabularyService.getCategoryWords(selectedCategory));
     
@@ -22,6 +23,14 @@ const VocabularyFlashcardScreen = () => {
     const handleCategoryChange = (categoryId: number) => {
         setSelectedCategory(categoryId);
     };
+
+    const handleBackClick = () => {
+        setCurrentWordIndex(currentWordIndex - 1);
+    }
+
+    const handleNextClick = () => {
+        setCurrentWordIndex(currentWordIndex + 1);
+    }
 
     if (!fontsLoaded) {
         return (
@@ -41,9 +50,15 @@ const VocabularyFlashcardScreen = () => {
             <View style={styles.contentContainer}>
                 <Text style={styles.heading}>Vocabulary Flashcard</Text>
 
-                <CategorySelector onCategoryChange={ handleCategoryChange } />
-
                 <View style={styles.content}>
+                    <CategorySelector onCategoryChange={ handleCategoryChange } />
+
+                    vocabulary?[currentWordIndex] && <VocabularyCard vocabulary={ vocabulary ? vocabulary[currentWordIndex] : undefined } />
+                    
+                    <View style={styles.buttonContainer}>
+                        <button onClick={ handleBackClick }>Back</button>
+                        <button onClick={ handleNextClick }>Next</button>
+                    </View>
                 </View>
             </View>
         </View>
@@ -73,6 +88,11 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontFamily: 'Outfit_500Medium',
         textAlign: 'center'
+    },
+    buttonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 });
 

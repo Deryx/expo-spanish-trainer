@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import CategorySelector from '../components/ui/CategorySelector'
+import VocabularyService from '../services/VocabularyService';
+import { useFetch } from '../hooks/useFetch';
 import { useFonts } from 'expo-font';
 import { Outfit_500Medium } from '@expo-google-fonts/outfit';
 import Vocabulary from '../types/Vocabulary';
 import VocabularyFillIn from '../components/games/VocabularyFillIn';
 
 const WordFillinScreen = () => {
+    const [selectedCategory, setSelectedCategory] = useState<number>(0);
+
+    const { data: vocabulary, loading, error } = useFetch(() => VocabularyService.getCategoryWords(selectedCategory));
+    
     const [fontsLoaded] = useFonts({
         Outfit_500Medium
     });
