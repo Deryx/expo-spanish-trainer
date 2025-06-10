@@ -6,13 +6,12 @@ import VocabularyService from '../services/VocabularyService';
 import { useFetch } from '../hooks/useFetch';
 import { useFonts } from 'expo-font';
 import { Outfit_500Medium } from '@expo-google-fonts/outfit';
-import Vocabulary from '../types/Vocabulary';
 import VocabularyCard from '../components/flashcards/VocabularyCard';
 
 const VocabularyFlashcardScreen = () => {
     const [selectedCategory, setSelectedCategory] = useState<number>(0);
 
-    const { data: words, loading, error } = useFetch(() => VocabularyService.getCategoryWords(selectedCategory));
+    const { data: vocabulary, loading, error } = useFetch(() => VocabularyService.getCategoryWords(selectedCategory));
     
     const [fontsLoaded] = useFonts({
         Outfit_500Medium
