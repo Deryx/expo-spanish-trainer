@@ -10,7 +10,9 @@ import Vocabulary from '../types/Vocabulary';
 import VocabularyCard from '../components/flashcards/VocabularyCard';
 
 const VocabularyFlashcardScreen = () => {
-    const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<number>(0);
+
+    const { data: words, loading, error } = useFetch(() => VocabularyService.getCategoryWords(selectedCategory));
     
     const [fontsLoaded] = useFonts({
         Outfit_500Medium

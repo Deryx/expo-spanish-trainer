@@ -15,3 +15,5 @@ class Category {
         return this.category;
     }
 }
+
+export default Category;

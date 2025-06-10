@@ -1,19 +1,6 @@
 import DatabaseOperations from "./database/DatabaseOperations";
-
-export type CategoryItem = {
-    id: number;
-    category: string;
-}
-
-type VocabularyItem = {
-    id: number;
-    word: string;
-    translation: string;
-    pronunciation: string;
-    category: number;
-    gender?: string;
-    image?: string;
-}
+import Category from "../types/Category";
+import Vocabulary from "../types/Vocabulary";
 
 class VocabularyService {
     async getAllCategories() {
@@ -21,7 +8,7 @@ class VocabularyService {
             `SELECT * FROM categories ORDER by category ASC`
         );
 
-        return result.rows.raw() as CategoryItem[];
+        return result.rows.raw() as Category[];
     }
 
     async getAllWords() {
@@ -29,16 +16,16 @@ class VocabularyService {
             `SELECT * FROM vocabulary ORDER BY word ASC`
         );
 
-        return result.rows.raw() as VocabularyItem[];
+        return result.rows.raw() as Vocabulary[];
     }
     
-    async getCategoryWords(categoryId: number) {
+    async getCategoryWords(categoryId: number): Promise<Vocabulary[]> {
         const result: any = await DatabaseOperations.executeQuery(
             `SELECT * FROM vocabulary WHERE category = ? ORDER BY word ASC`,
             [categoryId]
         );
 
-        return result.rows.raw() as CategoryItem[];
+        return result.rows.raw() as Vocabulary[];
     }
 };
 
